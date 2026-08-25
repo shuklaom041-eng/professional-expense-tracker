@@ -1,0 +1,161 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #222222;
+    line-height: 1.6;
+}/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    background-color: #1f2937;
+    padding: 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}/* =========================
+   MAIN CONTENT
+========================= */
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}section {
+    background-color: white;
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+}h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}p {
+    margin-bottom: 20px;
+}button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}button:hover {
+    background-color: #1d4ed8;
+}main a {
+    display: inline-block;
+    margin-right: 15px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background-color: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+
+nav {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 15px 20px;
+
+    flex-wrap: wrap;
+}
+
+
+/* ==========================================
+   NAVIGATION LINKS
+========================================== */
+
+nav a {
+    text-decoration: none;
+
+    padding: 9px 16px;
+
+    border-radius: 7px;
+
+    font-weight: 500;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* ==========================================
+   NAVIGATION HOVER
+========================================== */
+
+nav a:hover {
+    transform:
+        translateY(-1px);
+}
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+#logout-link {
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   MOBILE NAVIGATION
+========================================== */
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+
+        gap: 8px;
+
+        padding: 12px;
+    }
+
+
+    nav a {
+        width: 100%;
+
+        text-align: center;
+
+        box-sizing: border-box;
+    }
+
+}
+

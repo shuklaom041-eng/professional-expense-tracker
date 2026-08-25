@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Reports - Expense Tracker</title>
+
+
+    <!-- ==========================================
+         MAIN CSS
+    =========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <!-- ==========================================
+         RESPONSIVE CSS
+    =========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+
+    <!-- ==========================================
+         REPORT PAGE STYLES
+    =========================================== -->
+
+    <style>
+
+        /* ==========================================
+           REPORT PAGE
+        ========================================== */
+
+        #reports-page {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 30px 20px;
+
+        }
+
+
+        /* ==========================================
+           REPORT HEADER
+        ========================================== */
+
+        .reports-header {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .reports-header h1 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .reports-header p {
+
+            color: #6b7280;
+
+        }
+
+
+        /* ==========================================
+           REPORT FILTER
+        ========================================== */
+
+        #report-filter-section {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .report-filter-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr auto;
+
+            gap: 15px;
+
+            align-items: end;
+
+        }
+
+
+        .report-filter-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+
+        }
+
+
+        .report-filter-group label {
+
+            font-weight: 600;
+
+        }
+
+
+        .report-filter-group select {
+
+            width: 100%;
+
+            padding: 11px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            background: white;
+
+        }
+
+
+        #generate-report-btn {
+
+            padding: 11px 20px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #2563eb;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            min-height: 43px;
+
+        }
+
+
+        #generate-report-btn:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        #generate-report-btn:active {
+
+            transform: translateY(1px);
+
+        }
+
+
+        /* ==========================================
+           SUMMARY CARDS
+        ========================================== */
+
+        #report-summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .report-card {
+
+            background: white;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .report-card h3 {
+
+            margin-bottom: 12px;
+
+            font-size: 16px;
+
+        }
+
+
+        .report-card-value {
+
+            font-size: 25px;
+
+            font-weight: 700;
+
+            word-break: break-word;
+
+        }
+
+
+        .report-card-label {
+
+            margin-top: 6px;
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+        }
+
+
+        /* ==========================================
+           CHARTS
+        ========================================== */
+
+        #report-charts {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 25px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .report-chart-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .report-chart-card h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .report-chart-wrapper {
+
+            position: relative;
+
+            height: 350px;
+
+        }
+
+
+        /* ==========================================
+           ANALYTICS
+        ========================================== */
+
+        #report-analytics {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 25px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .analytics-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .analytics-card h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .analytics-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 12px 0;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+        }
+
+
+        .analytics-row:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .analytics-label {
+
+            color: #6b7280;
+
+        }
+
+
+        .analytics-value {
+
+            font-weight: 600;
+
+            text-align: right;
+
+        }
+
+
+        /* ==========================================
+           CATEGORY TABLE
+        ========================================== */
+
+        #category-report-section {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.06);
+
+            margin-bottom: 30px;
+
+        }
+
+
+        #category-report-section h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .category-table-wrapper {
+
+            width: 100%;
+
+            overflow-x: auto;
+
+        }
+
+
+        #category-report-table {
+
+            width: 100%;
+
+            min-width: 600px;
+
+            border-collapse: collapse;
+
+        }
+
+
+        #category-report-table th,
+        #category-report-table td {
+
+            padding: 13px;
+
+            text-align: left;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+        }
+
+
+        #category-report-table th {
+
+            background: #f9fafb;
+
+            font-weight: 600;
+
+        }
+
+
+        #category-report-table tbody tr:hover {
+
+            background: #f9fafb;
+
+        }
+
+
+        /* ==========================================
+           REPORT MESSAGE
+        ========================================== */
+
+        #report-message {
+
+            min-height: 20px;
+
+            margin-top: 15px;
+
+            font-weight: 500;
+
+        }
+
+
+        /* ==========================================
+           EMPTY STATE
+        ========================================== */
+
+        #report-empty {
+
+            display: none;
+
+            text-align: center;
+
+            padding: 40px;
+
+            margin-bottom: 30px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            color: #6b7280;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        /* ==========================================
+           RESPONSIVE - TABLET
+        ========================================== */
+
+        @media (max-width: 900px) {
+
+            #report-summary {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+
+            #report-charts {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            #report-analytics {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .report-filter-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+
+            #generate-report-btn {
+
+                width: 100%;
+
+            }
+
+        }
+
+
+        /* ==========================================
+           RESPONSIVE - MOBILE
+        ========================================== */
+
+        @media (max-width: 600px) {
+
+            #reports-page {
+
+                padding:
+                    20px 15px;
+
+            }
+
+
+            #report-summary {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .report-filter-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .report-card {
+
+                padding: 18px;
+
+            }
+
+
+            .report-chart-card {
+
+                padding: 18px;
+
+            }
+
+
+            .analytics-card {
+
+                padding: 18px;
+
+            }
+
+
+            .report-chart-wrapper {
+
+                height: 280px;
+
+            }
+
+
+            .analytics-row {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+            }
+
+
+            .analytics-value {
+
+                text-align: left;
+
+            }
+
+
+            #category-report-section {
+
+                padding: 18px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         NAVIGATION
+    =========================================== -->
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+
+        <a href="transaction.html">
+            Add Transaction
+        </a>
+
+
+        <a href="budget.html">
+            Budgets
+        </a>
+
+
+        <a href="reports.html">
+            Reports
+        </a>
+
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+
+        <a
+            href="#"
+            id="logout-link"
+        >
+            Logout
+        </a>
+
+    </nav>
+
+
+    <!-- ==========================================
+         MAIN
+    =========================================== -->
+
+    <main>
+
+        <section id="reports-page">
+
+
+            <!-- ==================================
+                 HEADER
+            =================================== -->
+
+            <div class="reports-header">
+
+                <h1>
+                    Financial Reports
+                </h1>
+
+                <p>
+                    Analyze your income, expenses,
+                    savings and spending patterns.
+                </p>
+
+            </div>
+
+
+            <!-- ==================================
+                 FILTER
+            =================================== -->
+
+            <section id="report-filter-section">
+
+                <h2>
+                    Generate Report
+                </h2>
+
+
+                <div class="report-filter-grid">
+
+
+                    <!-- MONTH -->
+
+                    <div class="report-filter-group">
+
+                        <label
+                            for="report-month"
+                        >
+                            Month
+                        </label>
+
+
+                        <select
+                            id="report-month"
+                        >
+
+                            <option value="1">
+                                January
+                            </option>
+
+                            <option value="2">
+                                February
+                            </option>
+
+                            <option value="3">
+                                March
+                            </option>
+
+                            <option value="4">
+                                April
+                            </option>
+
+                            <option value="5">
+                                May
+                            </option>
+
+                            <option value="6">
+                                June
+                            </option>
+
+                            <option value="7">
+                                July
+                            </option>
+
+                            <option value="8">
+                                August
+                            </option>
+
+                            <option value="9">
+                                September
+                            </option>
+
+                            <option value="10">
+                                October
+                            </option>
+
+                            <option value="11">
+                                November
+                            </option>
+
+                            <option value="12">
+                                December
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- YEAR -->
+
+                    <div class="report-filter-group">
+
+                        <label
+                            for="report-year"
+                        >
+                            Year
+                        </label>
+
+
+                        <select
+                            id="report-year"
+                        >
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- GENERATE -->
+
+                    <button
+                        type="button"
+                        id="generate-report-btn"
+                    >
+                        Generate Report
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="report-message"
+                    aria-live="polite"
+                ></p>
+
+            </section>
+
+
+            <!-- ==================================
+                 SUMMARY
+            =================================== -->
+
+            <section id="report-summary">
+
+
+                <!-- INCOME -->
+
+                <div class="report-card">
+
+                    <h3>
+                        Total Income
+                    </h3>
+
+                    <div
+                        class="report-card-value"
+                        id="report-income"
+                    >
+                        ₹0.00
+                    </div>
+
+                    <div class="report-card-label">
+                        Selected month
+                    </div>
+
+                </div>
+
+
+                <!-- EXPENSES -->
+
+                <div class="report-card">
+
+                    <h3>
+                        Total Expenses
+                    </h3>
+
+                    <div
+                        class="report-card-value"
+                        id="report-expenses"
+                    >
+                        ₹0.00
+                    </div>
+
+                    <div class="report-card-label">
+                        Selected month
+                    </div>
+
+                </div>
+
+
+                <!-- SAVINGS -->
+
+                <div class="report-card">
+
+                    <h3>
+                        Net Savings
+                    </h3>
+
+                    <div
+                        class="report-card-value"
+                        id="report-savings"
+                    >
+                        ₹0.00
+                    </div>
+
+                    <div class="report-card-label">
+                        Income − Expenses
+                    </div>
+
+                </div>
+
+
+                <!-- TRANSACTIONS -->
+
+                <div class="report-card">
+
+                    <h3>
+                        Transactions
+                    </h3>
+
+                    <div
+                        class="report-card-value"
+                        id="report-transaction-count"
+                    >
+                        0
+                    </div>
+
+                    <div class="report-card-label">
+                        Selected month
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 EMPTY STATE
+            =================================== -->
+
+            <div
+                id="report-empty"
+                role="status"
+                aria-live="polite"
+            >
+                No transactions found
+                for the selected month.
+            </div>
+
+
+            <!-- ==================================
+                 CHARTS
+            =================================== -->
+
+            <section id="report-charts">
+
+
+                <!-- INCOME VS EXPENSE -->
+
+                <div class="report-chart-card">
+
+                    <h2>
+                        Income vs Expenses
+                    </h2>
+
+
+                    <div
+                        class="report-chart-wrapper"
+                    >
+
+                        <canvas
+                            id="report-income-expense-chart"
+                        ></canvas>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="report-chart-card">
+
+                    <h2>
+                        Expenses by Category
+                    </h2>
+
+
+                    <div
+                        class="report-chart-wrapper"
+                    >
+
+                        <canvas
+                            id="report-category-chart"
+                        ></canvas>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 ANALYTICS
+            =================================== -->
+
+            <section id="report-analytics">
+
+
+                <!-- SPENDING ANALYSIS -->
+
+                <div class="analytics-card">
+
+                    <h2>
+                        Spending Analysis
+                    </h2>
+
+
+                    <div class="analytics-row">
+
+                        <span
+                            class="analytics-label"
+                        >
+                            Highest Expense Category
+                        </span>
+
+                        <span
+                            class="analytics-value"
+                            id="highest-category"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="analytics-row">
+
+                        <span
+                            class="analytics-label"
+                        >
+                            Highest Category Amount
+                        </span>
+
+                        <span
+                            class="analytics-value"
+                            id="highest-category-amount"
+                        >
+                            ₹0.00
+                        </span>
+
+                    </div>
+
+
+                    <div class="analytics-row">
+
+                        <span
+                            class="analytics-label"
+                        >
+                            Average Expense
+                        </span>
+
+                        <span
+                            class="analytics-value"
+                            id="average-expense"
+                        >
+                            ₹0.00
+                        </span>
+
+                    </div>
+
+
+                    <div class="analytics-row">
+
+                        <span
+                            class="analytics-label"
+                        >
+                            Largest Transaction
+                        </span>
+
+                        <span
+                            class="analytics-value"
+                            id="largest-transaction"
+                        >
+                            ₹0.00
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FINANCIAL HEALTH -->
+
+                <div class="analytics-card">
+
+                    <h2>
+                        Financial Health
+                    </h2>
+
+
+                    <div class="analytics-row">
+
+                        <span
+                            class="analytics-label"
+                        >
+                            Savings Rate
+                        </span>
+
+                        <span
+                            class="analytics-value"
+                            id="savings-rate"
+                        >
+                            0.00%
+                        </span>
+
+                    </div>
+
+
+                    <div class="analytics-row">
+
+                        <span
+                            class="analytics-label"
+                        >
+                            Expense Ratio
+                        </span>
+
+                        <span
+                            class="analytics-value"
+                            id="expense-ratio"
+                        >
+                            0.00%
+                        </span>
+
+                    </div>
+
+
+                    <div class="analytics-row">
+
+                        <span
+                            class="analytics-label"
+                        >
+                            Financial Status
+                        </span>
+
+                        <span
+                            class="analytics-value"
+                            id="financial-status"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="analytics-row">
+
+                        <span
+                            class="analytics-label"
+                        >
+                            Report Period
+                        </span>
+
+                        <span
+                            class="analytics-value"
+                            id="report-period"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 CATEGORY REPORT
+            =================================== -->
+
+            <section
+                id="category-report-section"
+            >
+
+                <h2>
+                    Category-wise Expense Report
+                </h2>
+
+
+                <div
+                    class="category-table-wrapper"
+                >
+
+                    <table
+                        id="category-report-table"
+                    >
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Category
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Transactions
+                                </th>
+
+                                <th>
+                                    Percentage
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="category-report-body"
+                        >
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Professional Expense Tracker.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ==========================================
+         AUTHENTICATION JS
+    =========================================== -->
+
+    <script src="../js/auth.js"></script>
+
+
+    <!-- ==========================================
+         CHART.JS
+    =========================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+
+    <!-- ==========================================
+         LOGOUT
+    =========================================== -->
+
+    <script>
+
+        const logoutLink =
+            document.querySelector(
+                "#logout-link"
+            );
+
+
+        if (logoutLink) {
+
+            logoutLink.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    if (
+                        typeof logoutUser ===
+                        "function"
+                    ) {
+
+                        logoutUser();
+
+                    } else {
+
+                        localStorage.removeItem(
+                            "token"
+                        );
+
+                        localStorage.removeItem(
+                            "jwtToken"
+                        );
+
+                    }
+
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+        }
+
+    </script>
+
+
+    <!-- ==========================================
+         REPORTS JS
+    =========================================== -->
+
+    <script src="../js/reports.js"></script>
+
+</body>
+
+</html>

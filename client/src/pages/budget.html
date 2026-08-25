@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Budget Management - Expense Tracker</title>
+
+
+    <!-- ================================= -->
+    <!-- MAIN CSS -->
+    <!-- ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <!-- ================================= -->
+    <!-- RESPONSIVE CSS -->
+    <!-- ================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+
+    <!-- ================================= -->
+    <!-- BUDGET PAGE STYLES -->
+    <!-- ================================= -->
+
+    <style>
+
+        /* ==========================================
+           BUDGET PAGE
+        ========================================== */
+
+        #budget-page {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 40px 20px;
+
+        }
+
+
+        /* ==========================================
+           HEADER
+        ========================================== */
+
+        .budget-header {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .budget-header h1 {
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .budget-header p {
+
+            color: #6b7280;
+
+        }
+
+
+        /* ==========================================
+           CREATE BUDGET SECTION
+        ========================================== */
+
+        #budget-form-section {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        #budget-form-section h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* ==========================================
+           FORM
+        ========================================== */
+
+        #budget-form {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+
+        }
+
+
+        .budget-form-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+
+        }
+
+
+        .budget-form-group label {
+
+            font-weight: 600;
+
+        }
+
+
+        .budget-form-group input,
+        .budget-form-group select {
+
+            padding: 11px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .budget-form-group input:focus,
+        .budget-form-group select:focus {
+
+            outline: none;
+
+            border-color: #2563eb;
+
+        }
+
+
+        /* ==========================================
+           FULL WIDTH
+        ========================================== */
+
+        .budget-full-width {
+
+            grid-column: 1 / -1;
+
+        }
+
+
+        /* ==========================================
+           CREATE BUTTON
+        ========================================== */
+
+        #create-budget-button {
+
+            padding: 12px 20px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #2563eb;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+        }
+
+
+        #create-budget-button:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        /* ==========================================
+           MESSAGE
+        ========================================== */
+
+        #budget-message {
+
+            margin-top: 15px;
+
+            color: #6b7280;
+
+        }
+
+
+        /* ==========================================
+           BUDGET LIST SECTION
+        ========================================== */
+
+        #budget-list-section {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        #budget-list-section h2 {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* ==========================================
+           BUDGET LIST
+        ========================================== */
+
+        #budget-list {
+
+            display: grid;
+
+            gap: 15px;
+
+        }
+
+
+        /* ==========================================
+           BUDGET CARD
+        ========================================== */
+
+        .budget-card {
+
+            padding: 18px;
+
+            background: #f8fafc;
+
+            border-radius: 10px;
+
+            border:
+                1px solid #e5e7eb;
+
+        }
+
+
+        .budget-card-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .budget-card-header h3 {
+
+            margin: 0;
+
+        }
+
+
+        .budget-type {
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background: #e5e7eb;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .budget-details {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .budget-detail {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+        }
+
+
+        .budget-detail-label {
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+        }
+
+
+        .budget-detail-value {
+
+            font-weight: 600;
+
+        }
+
+
+        /* ==========================================
+           BUDGET ACTIONS
+        ========================================== */
+
+        .budget-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .budget-actions button {
+
+            padding: 9px 15px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+        }
+
+
+        .edit-budget-button {
+
+            background: #2563eb;
+
+            color: white;
+
+        }
+
+
+        .delete-budget-button {
+
+            background: #dc2626;
+
+            color: white;
+
+        }
+
+
+        .budget-actions button:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        /* ==========================================
+           EMPTY MESSAGE
+        ========================================== */
+
+        #no-budget-message {
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #6b7280;
+
+        }
+
+
+        /* ==========================================
+           EDIT BUDGET FORM
+        ========================================== */
+
+        #edit-budget-section {
+
+            display: none;
+
+            margin-top: 30px;
+
+            padding: 25px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        #edit-budget-form {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr auto auto;
+
+            gap: 15px;
+
+            align-items: end;
+
+        }
+
+
+        #edit-budget-form label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-weight: 600;
+
+        }
+
+
+        #edit-budget-amount {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 11px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+
+        }
+
+
+        #save-budget-button,
+        #cancel-budget-button {
+
+            padding: 11px 18px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+        }
+
+
+        #save-budget-button {
+
+            background: #16a34a;
+
+            color: white;
+
+        }
+
+
+        #cancel-budget-button {
+
+            background: #6b7280;
+
+            color: white;
+
+        }
+
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 700px) {
+
+            #budget-form {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .budget-full-width {
+
+                grid-column: auto;
+
+            }
+
+
+            .budget-details {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            #edit-budget-form {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================= -->
+    <!-- NAVIGATION -->
+    <!-- ================================= -->
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+
+        <a href="add-transaction.html">
+            Add Transaction
+        </a>
+
+
+        <a href="reports.html">
+            Reports
+        </a>
+
+
+        <a href="budget.html">
+            Budgets
+        </a>
+
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+
+        <a
+            href="#"
+            id="logout-link"
+        >
+            Logout
+        </a>
+
+    </nav>
+
+
+    <!-- ================================= -->
+    <!-- MAIN -->
+    <!-- ================================= -->
+
+    <main>
+
+        <section id="budget-page">
+
+
+            <!-- ================================= -->
+            <!-- HEADER -->
+            <!-- ================================= -->
+
+            <div class="budget-header">
+
+                <h1>
+                    Budget Management
+                </h1>
+
+                <p>
+                    Create and manage your monthly
+                    and category budgets.
+                </p>
+
+            </div>
+
+
+            <!-- ================================= -->
+            <!-- CREATE BUDGET -->
+            <!-- ================================= -->
+
+            <section id="budget-form-section">
+
+                <h2>
+                    Create New Budget
+                </h2>
+
+
+                <form id="budget-form">
+
+
+                    <!-- Budget Type -->
+
+                    <div class="budget-form-group">
+
+                        <label for="budget-type">
+                            Budget Type
+                        </label>
+
+                        <select
+                            id="budget-type"
+                            required
+                        >
+
+                            <option value="monthly">
+                                Monthly Budget
+                            </option>
+
+                            <option value="category">
+                                Category Budget
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Category -->
+
+                    <div
+                        class="budget-form-group"
+                        id="category-group"
+                    >
+
+                        <label for="budget-category">
+                            Category
+                        </label>
+
+                        <select
+                            id="budget-category"
+                        >
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="Food">
+                                Food
+                            </option>
+
+                            <option value="Shopping">
+                                Shopping
+                            </option>
+
+                            <option value="Transport">
+                                Transport
+                            </option>
+
+                            <option value="Medical">
+                                Medical
+                            </option>
+
+                            <option value="Bills">
+                                Bills
+                            </option>
+
+                            <option value="Education">
+                                Education
+                            </option>
+
+                            <option value="Travel">
+                                Travel
+                            </option>
+
+                            <option value="Entertainment">
+                                Entertainment
+                            </option>
+
+                            <option value="Investment">
+                                Investment
+                            </option>
+
+                            <option value="Business">
+                                Business
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Month -->
+
+                    <div class="budget-form-group">
+
+                        <label for="budget-month">
+                            Month
+                        </label>
+
+                        <select
+                            id="budget-month"
+                            required
+                        >
+
+                            <option value="">
+                                Select Month
+                            </option>
+
+                            <option value="1">
+                                January
+                            </option>
+
+                            <option value="2">
+                                February
+                            </option>
+
+                            <option value="3">
+                                March
+                            </option>
+
+                            <option value="4">
+                                April
+                            </option>
+
+                            <option value="5">
+                                May
+                            </option>
+
+                            <option value="6">
+                                June
+                            </option>
+
+                            <option value="7">
+                                July
+                            </option>
+
+                            <option value="8">
+                                August
+                            </option>
+
+                            <option value="9">
+                                September
+                            </option>
+
+                            <option value="10">
+                                October
+                            </option>
+
+                            <option value="11">
+                                November
+                            </option>
+
+                            <option value="12">
+                                December
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Year -->
+
+                    <div class="budget-form-group">
+
+                        <label for="budget-year">
+                            Year
+                        </label>
+
+                        <input
+                            type="number"
+                            id="budget-year"
+                            min="2020"
+                            max="2100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Amount -->
+
+                    <div class="budget-form-group">
+
+                        <label for="budget-amount">
+                            Budget Amount (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="budget-amount"
+                            min="0"
+                            step="0.01"
+                            placeholder="Enter budget amount"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Create Button -->
+
+                    <div class="budget-form-group">
+
+                        <button
+                            type="submit"
+                            id="create-budget-button"
+                        >
+                            Create Budget
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+
+                <!-- Message -->
+
+                <p id="budget-message"></p>
+
+            </section>
+
+
+            <!-- ================================= -->
+            <!-- BUDGET LIST -->
+            <!-- ================================= -->
+
+            <section id="budget-list-section">
+
+                <h2>
+                    Your Budgets
+                </h2>
+
+
+                <div id="budget-list">
+
+                    <!-- Budgets generated by JavaScript -->
+
+                </div>
+
+
+                <div id="no-budget-message">
+
+                    No budgets found.
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================= -->
+            <!-- EDIT BUDGET -->
+            <!-- ================================= -->
+
+            <section id="edit-budget-section">
+
+                <h2>
+                    Edit Budget
+                </h2>
+
+
+                <form id="edit-budget-form">
+
+
+                    <div>
+
+                        <label for="edit-budget-amount">
+                            New Budget Amount (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="edit-budget-amount"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        id="save-budget-button"
+                    >
+                        Save Changes
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="cancel-budget-button"
+                    >
+                        Cancel
+                    </button>
+
+
+                </form>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================= -->
+    <!-- FOOTER -->
+    <!-- ================================= -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Professional Expense Tracker.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================= -->
+
+    <script src="../js/auth.js"></script>
+
+
+    <!-- Budget JavaScript -->
+
+    <script src="../js/budget.js"></script>
+
+
+    <!-- Logout -->
+
+    <script>
+
+        const logoutLink =
+            document.querySelector(
+                "#logout-link"
+            );
+
+
+        logoutLink.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+                logoutUser();
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

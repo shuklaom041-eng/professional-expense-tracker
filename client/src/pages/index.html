@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Professional Expense Tracker</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="login.html">Login</a>
+
+        <a href="register.html">Register</a>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- ====================================== -->
+        <!-- HERO SECTION -->
+        <!-- ====================================== -->
+
+        <section id="hero-section">
+
+            <h1 id="main-title">
+                Professional Expense Tracker
+            </h1>
+
+            <p id="description">
+                Manage your income and expenses easily.
+            </p>
+
+            <h2>
+                Take Control of Your Money
+            </h2>
+
+            <p>
+                Track your income, expenses, savings, and financial
+                activity from one simple dashboard.
+            </p>
+
+            <button id="get-started-btn">
+                Get Started
+            </button>
+
+            <a href="login.html" id="login-link">
+                Login
+            </a>
+
+        </section>
+
+
+        <!-- ====================================== -->
+        <!-- WHY TRACK EXPENSES SECTION -->
+        <!-- ====================================== -->
+
+        <section>
+
+            <h2>
+                Why Track Your Expenses?
+            </h2>
+
+            <p>
+                Tracking your expenses helps you understand where
+                your money goes, control unnecessary spending, and
+                improve your financial planning.
+            </p>
+
+            <a href="dashboard.html">
+                Track Expenses
+            </a>
+
+            <a href="dashboard.html">
+                View Reports
+            </a>
+
+            <a href="dashboard.html">
+                Manage Budget
+            </a>
+
+        </section>
+
+
+        <!-- ====================================== -->
+        <!-- ADD TRANSACTION SECTION -->
+        <!-- ====================================== -->
+
+        <section id="transaction-section">
+
+            <h2>
+                Add Transaction
+            </h2>
+
+            <form id="transaction-form">
+
+                <!-- Transaction Type -->
+                <div>
+
+                    <label for="transaction-type">
+                        Transaction Type
+                    </label>
+
+                    <select
+                        id="transaction-type"
+                        name="type"
+                    >
+
+                        <option value="expense">
+                            Expense
+                        </option>
+
+                        <option value="income">
+                            Income
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Transaction Title -->
+                <div>
+
+                    <label for="transaction-title">
+                        Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="transaction-title"
+                        name="title"
+                        placeholder="Enter transaction title"
+                    >
+
+                </div>
+
+
+                <!-- Amount -->
+                <div>
+
+                    <label for="transaction-amount">
+                        Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        id="transaction-amount"
+                        name="amount"
+                        placeholder="Enter amount"
+                        min="0"
+                        step="0.01"
+                    >
+
+                </div>
+
+
+                <!-- Category -->
+                <div>
+
+                    <label for="transaction-category">
+                        Category
+                    </label>
+
+                    <select
+                        id="transaction-category"
+                        name="category"
+                    >
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="Food">
+                            Food
+                        </option>
+
+                        <option value="Shopping">
+                            Shopping
+                        </option>
+
+                        <option value="Transport">
+                            Transport
+                        </option>
+
+                        <option value="Medical">
+                            Medical
+                        </option>
+
+                        <option value="Bills">
+                            Bills
+                        </option>
+
+                        <option value="Education">
+                            Education
+                        </option>
+
+                        <option value="Travel">
+                            Travel
+                        </option>
+
+                        <option value="Salary">
+                            Salary
+                        </option>
+
+                        <option value="Business">
+                            Business
+                        </option>
+
+                        <option value="Entertainment">
+                            Entertainment
+                        </option>
+
+                        <option value="Investment">
+                            Investment
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Date -->
+                <div>
+
+                    <label for="transaction-date">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="transaction-date"
+                        name="date"
+                    >
+
+                </div>
+
+
+                <!-- Notes -->
+                <div>
+
+                    <label for="transaction-notes">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="transaction-notes"
+                        name="notes"
+                        placeholder="Add notes about this transaction"
+                        rows="4"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Submit Button -->
+                <button type="submit">
+                    Add Transaction
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ====================================== -->
+        <!-- TRANSACTION LIST SECTION -->
+        <!-- ====================================== -->
+
+        <section id="transactions-section">
+
+            <h2>
+                Recent Transactions
+            </h2>
+
+            <div id="transaction-list">
+
+                <!-- Transactions will be added here
+                     by JavaScript -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ====================================== -->
+    <!-- FOOTER -->
+    <!-- ====================================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Professional Expense Tracker.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ====================================== -->
+    <!-- JAVASCRIPT -->
+    <!-- ====================================== -->
+
+    <script src="../js/auth.js"></script>
+<script src="../js/app.js"></script>
+
+</body>
+
+</html>
