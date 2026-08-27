@@ -12,7 +12,7 @@ const {
     getBudgets,
     updateBudget,
     deleteBudget
-} = require("../controllers/budgetController");
+} = require("../Controllers/budgetController");
 
 
 // ==========================================
