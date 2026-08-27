@@ -16,7 +16,7 @@ const {
     getReportSummary,
     getCategoryReport,
     getMonthlyReport
-} = require("../controllers/reportController");
+} = require("../Controllers/reportController");
 
 
 // ==========================================
