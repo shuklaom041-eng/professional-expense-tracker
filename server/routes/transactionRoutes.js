@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const transactionController =
-    require("../controllers/transactionController");
+    require("../Controllers/transactionController");
 
 const protect =
     require("../middleware/auth");
