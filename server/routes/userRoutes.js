@@ -6,7 +6,7 @@ const router =
 
 
 const userController =
-    require("../controllers/userController");
+    require("../Controllers/userController");
 
 
 const protect =
