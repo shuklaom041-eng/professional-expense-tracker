@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Import authentication controller
 const authController =
-    require("../controllers/authController");
+    require("../Controllers/authController");
 
 
 // Authentication testing route
