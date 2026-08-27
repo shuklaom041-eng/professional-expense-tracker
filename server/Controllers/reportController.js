@@ -3,7 +3,7 @@
 // REPORT CONTROLLER
 // ==========================================
 
-const Transaction = require("../models/Transaction");
+const Transaction = require("../models/transaction");
 
 
 // ==========================================
