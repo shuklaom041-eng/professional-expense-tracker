@@ -1,14 +1,13 @@
 
+
 // ==========================================
 // API CONFIGURATION
 // ==========================================
 
-// Use window so API_BASE_URL is not declared
-// again with const if this file is loaded twice.
-
+// Production Backend - Render
 window.API_BASE_URL =
     window.API_BASE_URL ||
-    "http://localhost:5000/api";
+    "https://professional-expense-tracker1.onrender.com/api";
 
 
 // ==========================================
@@ -24,7 +23,7 @@ async function loginUser(
 
         const response =
             await fetch(
-                `${API_BASE_URL}/auth/login`,
+                `${window.API_BASE_URL}/auth/login`,
                 {
 
                     method: "POST",
