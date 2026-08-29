@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,37 +6,63 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Professional Expense Tracker</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css">
 
-    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
 
 </head>
 
+
 <body>
 
-    <!-- Navigation -->
+
+    <!-- ======================================
+         NAVIGATION
+    ====================================== -->
+
     <nav>
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+            Home
+        </a>
 
-        <a href="login.html">Login</a>
+        <a href="login.html">
+            Login
+        </a>
 
-        <a href="register.html">Register</a>
+        <a href="register.html">
+            Register
+        </a>
 
     </nav>
 
 
-    <!-- Main Content -->
+    <!-- ======================================
+         MAIN CONTENT
+    ====================================== -->
+
     <main>
 
-        <!-- ====================================== -->
-        <!-- HERO SECTION -->
-        <!-- ====================================== -->
+
+        <!-- ======================================
+             HERO SECTION
+        ====================================== -->
 
         <section id="hero-section">
 
@@ -43,33 +70,41 @@
                 Professional Expense Tracker
             </h1>
 
+
             <p id="description">
                 Manage your income and expenses easily.
             </p>
 
+
             <h2>
                 Take Control of Your Money
             </h2>
+
 
             <p>
                 Track your income, expenses, savings, and financial
                 activity from one simple dashboard.
             </p>
 
+
             <button id="get-started-btn">
                 Get Started
             </button>
 
-            <a href="login.html" id="login-link">
+
+            <a
+                href="login.html"
+                id="login-link"
+            >
                 Login
             </a>
 
         </section>
 
 
-        <!-- ====================================== -->
-        <!-- WHY TRACK EXPENSES SECTION -->
-        <!-- ====================================== -->
+        <!-- ======================================
+             WHY TRACK EXPENSES
+        ====================================== -->
 
         <section>
 
@@ -77,19 +112,23 @@
                 Why Track Your Expenses?
             </h2>
 
+
             <p>
                 Tracking your expenses helps you understand where
                 your money goes, control unnecessary spending, and
                 improve your financial planning.
             </p>
 
+
             <a href="dashboard.html">
                 Track Expenses
             </a>
 
+
             <a href="dashboard.html">
                 View Reports
             </a>
+
 
             <a href="dashboard.html">
                 Manage Budget
@@ -98,9 +137,9 @@
         </section>
 
 
-        <!-- ====================================== -->
-        <!-- ADD TRANSACTION SECTION -->
-        <!-- ====================================== -->
+        <!-- ======================================
+             ADD TRANSACTION
+        ====================================== -->
 
         <section id="transaction-section">
 
@@ -108,14 +147,18 @@
                 Add Transaction
             </h2>
 
+
             <form id="transaction-form">
 
-                <!-- Transaction Type -->
+
+                <!-- TRANSACTION TYPE -->
+
                 <div>
 
                     <label for="transaction-type">
                         Transaction Type
                     </label>
+
 
                     <select
                         id="transaction-type"
@@ -135,12 +178,14 @@
                 </div>
 
 
-                <!-- Transaction Title -->
+                <!-- TITLE -->
+
                 <div>
 
                     <label for="transaction-title">
                         Title
                     </label>
+
 
                     <input
                         type="text"
@@ -152,12 +197,14 @@
                 </div>
 
 
-                <!-- Amount -->
+                <!-- AMOUNT -->
+
                 <div>
 
                     <label for="transaction-amount">
                         Amount
                     </label>
+
 
                     <input
                         type="number"
@@ -171,12 +218,14 @@
                 </div>
 
 
-                <!-- Category -->
+                <!-- CATEGORY -->
+
                 <div>
 
                     <label for="transaction-category">
                         Category
                     </label>
+
 
                     <select
                         id="transaction-category"
@@ -240,12 +289,14 @@
                 </div>
 
 
-                <!-- Date -->
+                <!-- DATE -->
+
                 <div>
 
                     <label for="transaction-date">
                         Date
                     </label>
+
 
                     <input
                         type="date"
@@ -256,12 +307,14 @@
                 </div>
 
 
-                <!-- Notes -->
+                <!-- NOTES -->
+
                 <div>
 
                     <label for="transaction-notes">
                         Notes
                     </label>
+
 
                     <textarea
                         id="transaction-notes"
@@ -273,19 +326,21 @@
                 </div>
 
 
-                <!-- Submit Button -->
+                <!-- SUBMIT -->
+
                 <button type="submit">
                     Add Transaction
                 </button>
+
 
             </form>
 
         </section>
 
 
-        <!-- ====================================== -->
-        <!-- TRANSACTION LIST SECTION -->
-        <!-- ====================================== -->
+        <!-- ======================================
+             TRANSACTION LIST
+        ====================================== -->
 
         <section id="transactions-section">
 
@@ -293,21 +348,22 @@
                 Recent Transactions
             </h2>
 
+
             <div id="transaction-list">
 
-                <!-- Transactions will be added here
-                     by JavaScript -->
+                <!-- Transactions loaded by JavaScript -->
 
             </div>
 
         </section>
 
+
     </main>
 
 
-    <!-- ====================================== -->
-    <!-- FOOTER -->
-    <!-- ====================================== -->
+    <!-- ======================================
+         FOOTER
+    ====================================== -->
 
     <footer>
 
@@ -319,13 +375,16 @@
     </footer>
 
 
-    <!-- ====================================== -->
-    <!-- JAVASCRIPT -->
-    <!-- ====================================== -->
+    <!-- ======================================
+         JAVASCRIPT
+    ====================================== -->
 
     <script src="../js/auth.js"></script>
-<script src="../js/app.js"></script>
+
+    <script src="../js/app.js"></script>
+
 
 </body>
 
 </html>
+```

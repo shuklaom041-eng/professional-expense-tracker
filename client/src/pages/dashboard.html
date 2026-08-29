@@ -37,16 +37,20 @@
     >
 
 
-    <!-- DASHBOARD EXTRA STYLES -->
-
     <style>
+
+        /* =================================
+           FILTERS
+        ================================= */
 
         #transaction-filters {
 
             margin-top: 30px;
             margin-bottom: 30px;
             padding: 20px;
+
             background: white;
+
             border-radius: 12px;
 
             box-shadow:
@@ -161,7 +165,9 @@
         }
 
 
-        /* BUDGET */
+        /* =================================
+           BUDGET
+        ================================= */
 
         #budget-overview {
 
@@ -329,6 +335,10 @@
         }
 
 
+        /* =================================
+           RESPONSIVE
+        ================================= */
+
         @media (max-width: 900px) {
 
             .filter-grid {
@@ -376,29 +386,38 @@
 <body>
 
 
-    <!-- NAVIGATION -->
+    <!-- =================================
+         NAVIGATION
+    ================================= -->
 
     <nav>
 
-        <a href="./index.html">
+        <a href="index.html">
             Home
         </a>
 
-        <a href="./dashboard.html">
+
+        <a href="dashboard.html">
             Dashboard
         </a>
 
-        <a href="./add-transaction.html">
+
+        <!-- FIXED ADD TRANSACTION LINK -->
+
+        <a href="index.html#transaction-section">
             Add Transaction
         </a>
 
-        <a href="./budget.html">
+
+        <a href="budget.html">
             Budget
         </a>
 
-        <a href="./profile.html">
+
+        <a href="profile.html">
             Profile
         </a>
+
 
         <a
             href="#"
@@ -410,7 +429,9 @@
     </nav>
 
 
-    <!-- DASHBOARD -->
+    <!-- =================================
+         DASHBOARD
+    ================================= -->
 
     <main>
 
@@ -425,6 +446,7 @@
             <!-- SUMMARY CARDS -->
 
             <div id="summary-cards">
+
 
                 <div class="summary-card">
 
@@ -480,7 +502,9 @@
             </div>
 
 
-            <!-- CHARTS -->
+            <!-- =================================
+                 CHARTS
+            ================================= -->
 
             <section id="charts-section">
 
@@ -517,7 +541,9 @@
             </section>
 
 
-            <!-- BUDGET -->
+            <!-- =================================
+                 BUDGET OVERVIEW
+            ================================= -->
 
             <section id="budget-overview">
 
@@ -528,7 +554,9 @@
 
                 <div id="budget-overview-card">
 
+
                     <div class="budget-overview-grid">
+
 
                         <div class="budget-overview-item">
 
@@ -568,6 +596,7 @@
 
                         </div>
 
+
                     </div>
 
 
@@ -588,12 +617,15 @@
                         No budget set for this month.
                     </p>
 
+
                 </div>
 
             </section>
 
 
-            <!-- FILTERS -->
+            <!-- =================================
+                 FILTERS
+            ================================= -->
 
             <section id="transaction-filters">
 
@@ -657,18 +689,53 @@
                                 All Categories
                             </option>
 
-                            <option value="Food">Food</option>
-                            <option value="Shopping">Shopping</option>
-                            <option value="Transport">Transport</option>
-                            <option value="Medical">Medical</option>
-                            <option value="Bills">Bills</option>
-                            <option value="Education">Education</option>
-                            <option value="Travel">Travel</option>
-                            <option value="Salary">Salary</option>
-                            <option value="Business">Business</option>
-                            <option value="Entertainment">Entertainment</option>
-                            <option value="Investment">Investment</option>
-                            <option value="Other">Other</option>
+                            <option value="Food">
+                                Food
+                            </option>
+
+                            <option value="Shopping">
+                                Shopping
+                            </option>
+
+                            <option value="Transport">
+                                Transport
+                            </option>
+
+                            <option value="Medical">
+                                Medical
+                            </option>
+
+                            <option value="Bills">
+                                Bills
+                            </option>
+
+                            <option value="Education">
+                                Education
+                            </option>
+
+                            <option value="Travel">
+                                Travel
+                            </option>
+
+                            <option value="Salary">
+                                Salary
+                            </option>
+
+                            <option value="Business">
+                                Business
+                            </option>
+
+                            <option value="Entertainment">
+                                Entertainment
+                            </option>
+
+                            <option value="Investment">
+                                Investment
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
 
                         </select>
 
@@ -702,6 +769,7 @@
 
                     </div>
 
+
                 </div>
 
 
@@ -722,6 +790,7 @@
                         Clear Filters
                     </button>
 
+
                     <span id="filter-result-count">
                         Showing all transactions
                     </span>
@@ -731,7 +800,9 @@
             </section>
 
 
-            <!-- TRANSACTIONS -->
+            <!-- =================================
+                 TRANSACTIONS
+            ================================= -->
 
             <section id="dashboard-transactions">
 
@@ -739,12 +810,17 @@
                     Transactions
                 </h2>
 
-                <div id="dashboard-transaction-list"></div>
+
+                <div
+                    id="dashboard-transaction-list"
+                ></div>
 
             </section>
 
 
-            <!-- EDIT TRANSACTION -->
+            <!-- =================================
+                 EDIT TRANSACTION
+            ================================= -->
 
             <section
                 id="edit-transaction-section"
@@ -830,18 +906,53 @@
                                 Select Category
                             </option>
 
-                            <option value="Food">Food</option>
-                            <option value="Shopping">Shopping</option>
-                            <option value="Transport">Transport</option>
-                            <option value="Medical">Medical</option>
-                            <option value="Bills">Bills</option>
-                            <option value="Education">Education</option>
-                            <option value="Travel">Travel</option>
-                            <option value="Salary">Salary</option>
-                            <option value="Business">Business</option>
-                            <option value="Entertainment">Entertainment</option>
-                            <option value="Investment">Investment</option>
-                            <option value="Other">Other</option>
+                            <option value="Food">
+                                Food
+                            </option>
+
+                            <option value="Shopping">
+                                Shopping
+                            </option>
+
+                            <option value="Transport">
+                                Transport
+                            </option>
+
+                            <option value="Medical">
+                                Medical
+                            </option>
+
+                            <option value="Bills">
+                                Bills
+                            </option>
+
+                            <option value="Education">
+                                Education
+                            </option>
+
+                            <option value="Travel">
+                                Travel
+                            </option>
+
+                            <option value="Salary">
+                                Salary
+                            </option>
+
+                            <option value="Business">
+                                Business
+                            </option>
+
+                            <option value="Entertainment">
+                                Entertainment
+                            </option>
+
+                            <option value="Investment">
+                                Investment
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
 
                         </select>
 
@@ -888,6 +999,7 @@
                         Cancel
                     </button>
 
+
                 </form>
 
             </section>
@@ -910,7 +1022,9 @@
     </footer>
 
 
-    <!-- AUTH JS -->
+    <!-- =================================
+         JAVASCRIPT
+    ================================= -->
 
     <script src="../js/auth.js"></script>
 
@@ -939,7 +1053,7 @@
                     logoutUser();
 
                     window.location.href =
-                        "./login.html";
+                        "login.html";
 
                 }
             );
@@ -952,6 +1066,7 @@
     <!-- DASHBOARD JS -->
 
     <script src="../js/dashboard.js"></script>
+
 
 </body>
 
