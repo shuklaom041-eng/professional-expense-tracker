@@ -1,12 +1,10 @@
-
 // ==========================================
 // AUTHENTICATION CHECK
 // ==========================================
 
 if (!isAuthenticated()) {
 
-    window.location.href =
-        "login.html";
+    window.location.href = "login.html";
 
 }
 
@@ -16,38 +14,13 @@ if (!isAuthenticated()) {
 // ==========================================
 
 const transactionForm =
-    document.querySelector(
-        "#transaction-form"
-    );
-
+    document.querySelector("#transaction-form");
 
 const transactionMessage =
-    document.querySelector(
-        "#transaction-message"
-    );
-
+    document.querySelector("#transaction-message");
 
 const addTransactionButton =
-    document.querySelector(
-        "#add-transaction-button"
-    );
-
-
-// ==========================================
-// CHECK REQUIRED ELEMENTS
-// ==========================================
-
-if (
-    !transactionForm ||
-    !transactionMessage ||
-    !addTransactionButton
-) {
-
-    console.error(
-        "Transaction form elements not found."
-    );
-
-}
+    document.querySelector("#add-transaction-button");
 
 
 // ==========================================
@@ -60,17 +33,14 @@ if (transactionForm) {
         "submit",
         async function (event) {
 
-            // Prevent page reload
-
             event.preventDefault();
 
 
             // ==================================
-            // CLEAR PREVIOUS MESSAGE
+            // CLEAR MESSAGE
             // ==================================
 
             transactionMessage.textContent = "";
-
             transactionMessage.className = "";
 
 
@@ -83,30 +53,25 @@ if (transactionForm) {
                     "#transaction-type"
                 ).value;
 
-
             const title =
                 document.querySelector(
                     "#transaction-title"
                 ).value.trim();
-
 
             const amount =
                 document.querySelector(
                     "#transaction-amount"
                 ).value;
 
-
             const category =
                 document.querySelector(
                     "#transaction-category"
                 ).value;
 
-
             const date =
                 document.querySelector(
                     "#transaction-date"
                 ).value;
-
 
             const description =
                 document.querySelector(
@@ -124,20 +89,15 @@ if (transactionForm) {
                     "Please enter a transaction title.";
 
                 return;
-
             }
 
 
-            if (
-                !amount ||
-                Number(amount) <= 0
-            ) {
+            if (!amount || Number(amount) <= 0) {
 
                 transactionMessage.textContent =
                     "Please enter a valid amount.";
 
                 return;
-
             }
 
 
@@ -147,7 +107,6 @@ if (transactionForm) {
                     "Please select a transaction category.";
 
                 return;
-
             }
 
 
@@ -160,35 +119,28 @@ if (transactionForm) {
                     "Invalid transaction type.";
 
                 return;
-
             }
 
 
             // ==================================
-            // CHECK TOKEN
+            // GET TOKEN
             // ==================================
 
-            const token =
-                getToken();
-
+            const token = getToken();
 
             if (!token) {
 
                 transactionMessage.textContent =
                     "Your session has expired. Please login again.";
 
-                setTimeout(
-                    function () {
+                setTimeout(function () {
 
-                        window.location.href =
-                            "login.html";
+                    window.location.href =
+                        "login.html";
 
-                    },
-                    1000
-                );
+                }, 1000);
 
                 return;
-
             }
 
 
@@ -196,9 +148,7 @@ if (transactionForm) {
             // DISABLE BUTTON
             // ==================================
 
-            addTransactionButton.disabled =
-                true;
-
+            addTransactionButton.disabled = true;
 
             addTransactionButton.textContent =
                 "Adding...";
@@ -207,60 +157,52 @@ if (transactionForm) {
             try {
 
                 // ==================================
-                // SEND TRANSACTION TO BACKEND
+                // SEND TO RENDER BACKEND
                 // ==================================
 
-                const response =
-                    await fetch(
-                        `${API_BASE_URL}/transactions`,
-                        {
+                const response = await fetch(
+                    `${window.API_BASE_URL}/transactions`,
+                    {
 
-                            method: "POST",
+                        method: "POST",
 
-                            headers: {
+                        headers: {
 
-                                "Content-Type":
-                                    "application/json",
+                            "Content-Type":
+                                "application/json",
 
-                                "Authorization":
-                                    `Bearer ${token}`
+                            "Authorization":
+                                `Bearer ${token}`
 
-                            },
+                        },
 
-                            body: JSON.stringify({
+                        body: JSON.stringify({
 
-                                title: title,
+                            title: title,
 
-                                amount:
-                                    Number(amount),
+                            amount: Number(amount),
 
-                                type: type,
+                            type: type,
 
-                                category: category,
+                            category: category,
 
-                                description:
-                                    description,
+                            description: description,
 
-                                date:
-                                    date || undefined
+                            date: date || undefined
 
-                            })
+                        })
 
-                        }
-                    );
+                    }
+                );
 
 
                 // ==================================
-                // READ RESPONSE
+                // RESPONSE
                 // ==================================
 
                 const data =
                     await response.json();
 
-
-                // ==================================
-                // HANDLE BACKEND ERROR
-                // ==================================
 
                 if (!response.ok) {
 
@@ -268,7 +210,6 @@ if (transactionForm) {
                         data.message ||
                         "Failed to add transaction."
                     );
-
                 }
 
 
@@ -278,7 +219,6 @@ if (transactionForm) {
 
                 transactionMessage.textContent =
                     "Transaction added successfully!";
-
 
                 transactionMessage.className =
                     "success";
@@ -298,18 +238,15 @@ if (transactionForm) {
 
 
                 // ==================================
-                // REDIRECT TO DASHBOARD
+                // REDIRECT
                 // ==================================
 
-                setTimeout(
-                    function () {
+                setTimeout(function () {
 
-                        window.location.href =
-                            "dashboard.html";
+                    window.location.href =
+                        "dashboard.html";
 
-                    },
-                    1000
-                );
+                }, 1000);
 
 
             } catch (error) {
@@ -324,26 +261,17 @@ if (transactionForm) {
                     error.message ||
                     "Something went wrong while adding the transaction.";
 
-
                 transactionMessage.className =
                     "error";
 
 
-                // ==================================
-                // ENABLE BUTTON AGAIN
-                // ==================================
-
                 addTransactionButton.disabled =
                     false;
 
-
                 addTransactionButton.textContent =
                     "Add Transaction";
-
             }
 
         }
     );
-
 }
-

@@ -1,3 +1,4 @@
+
 // ==========================================
 // REGISTER PAGE
 // ==========================================
@@ -74,9 +75,12 @@ registerForm.addEventListener(
 
         try {
 
-            // Send registration request
+            // ==========================================
+            // SEND REGISTRATION REQUEST
+            // ==========================================
+
             const response = await fetch(
-                `${API_BASE_URL}/auth/register`,
+                `${window.API_BASE_URL}/auth/register`,
                 {
                     method: "POST",
 
@@ -109,7 +113,10 @@ registerForm.addEventListener(
             }
 
 
-            // Success message
+            // ==========================================
+            // SUCCESS MESSAGE
+            // ==========================================
+
             registerMessage.textContent =
                 "Account created successfully!";
 
@@ -117,7 +124,10 @@ registerForm.addEventListener(
                 "login-message success";
 
 
-            // Redirect to login page
+            // ==========================================
+            // REDIRECT TO LOGIN
+            // ==========================================
+
             setTimeout(function () {
 
                 window.location.href =
@@ -130,13 +140,13 @@ registerForm.addEventListener(
 
             console.error(
                 "Registration error:",
-                error.message
+                error
             );
 
 
-            // Show error
             registerMessage.textContent =
-                error.message;
+                error.message ||
+                "Unable to connect to server.";
 
             registerMessage.className =
                 "login-message error";
@@ -152,3 +162,4 @@ registerForm.addEventListener(
 
     }
 );
+

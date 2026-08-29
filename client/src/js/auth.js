@@ -1,10 +1,7 @@
-
-
 // ==========================================
 // API CONFIGURATION
 // ==========================================
 
-// Production Backend - Render
 window.API_BASE_URL =
     window.API_BASE_URL ||
     "https://professional-expense-tracker1.onrender.com/api";
@@ -14,82 +11,47 @@ window.API_BASE_URL =
 // LOGIN USER
 // ==========================================
 
-async function loginUser(
-    email,
-    password
-) {
+async function loginUser(email, password) {
 
     try {
 
-        const response =
-            await fetch(
-                `${window.API_BASE_URL}/auth/login`,
-                {
+        const response = await fetch(
+            `${window.API_BASE_URL}/auth/login`,
+            {
+                method: "POST",
 
-                    method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-                    headers: {
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            }
+        );
 
-                        "Content-Type":
-                            "application/json"
-
-                    },
-
-                    body: JSON.stringify({
-
-                        email: email,
-
-                        password: password
-
-                    })
-
-                }
-            );
-
-
-        const data =
-            await response.json();
-
+        const data = await response.json();
 
         if (!response.ok) {
-
             throw new Error(
-                data.message ||
-                "Login failed"
+                data.message || "Login failed"
             );
-
         }
-
-
-        // ==================================
-        // STORE JWT TOKEN
-        // ==================================
 
         localStorage.setItem(
             "token",
             data.token
         );
 
-
-        // ==================================
-        // STORE USER INFORMATION
-        // ==================================
-
         localStorage.setItem(
             "user",
-            JSON.stringify(
-                data.user
-            )
+            JSON.stringify(data.user)
         );
 
-
-        console.log(
-            "Login successful"
-        );
-
+        console.log("Login successful");
 
         return data;
-
 
     } catch (error) {
 
@@ -98,11 +60,8 @@ async function loginUser(
             error.message
         );
 
-
         throw error;
-
     }
-
 }
 
 
@@ -112,37 +71,27 @@ async function loginUser(
 
 function getToken() {
 
-    return localStorage.getItem(
-        "token"
-    );
+    return localStorage.getItem("token");
 
 }
 
 
 // ==========================================
-// GET CURRENT USER FROM STORAGE
+// GET CURRENT USER
 // ==========================================
 
 function getStoredUser() {
 
     const user =
-        localStorage.getItem(
-            "user"
-        );
-
+        localStorage.getItem("user");
 
     if (!user) {
-
         return null;
-
     }
-
 
     try {
 
-        return JSON.parse(
-            user
-        );
+        return JSON.parse(user);
 
     } catch (error) {
 
@@ -152,9 +101,7 @@ function getStoredUser() {
         );
 
         return null;
-
     }
-
 }
 
 
@@ -164,15 +111,12 @@ function getStoredUser() {
 
 function isAuthenticated() {
 
-    const token =
-        getToken();
-
+    const token = getToken();
 
     return (
         token !== null &&
         token !== ""
     );
-
 }
 
 
@@ -182,35 +126,11 @@ function isAuthenticated() {
 
 function logoutUser() {
 
-    // ==================================
-    // REMOVE JWT TOKEN
-    // ==================================
+    localStorage.removeItem("token");
 
-    localStorage.removeItem(
-        "token"
-    );
+    localStorage.removeItem("user");
 
+    console.log("User logged out");
 
-    // ==================================
-    // REMOVE STORED USER
-    // ==================================
-
-    localStorage.removeItem(
-        "user"
-    );
-
-
-    console.log(
-        "User logged out"
-    );
-
-
-    // ==================================
-    // REDIRECT TO LOGIN
-    // ==================================
-
-    window.location.href =
-        "login.html";
-
+    window.location.href = "login.html";
 }
-
