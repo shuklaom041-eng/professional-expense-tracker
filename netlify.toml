@@ -1,7 +1,9 @@
+```toml
 [build]
-  publish = "client/src"
+  publish = "client"
 
 [[redirects]]
-  from = "/"
+  from = "/*"
   to = "/pages/index.html"
   status = 200
+```

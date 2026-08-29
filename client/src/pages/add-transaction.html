@@ -1,4 +1,5 @@
 
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,27 +40,30 @@
 
     <nav>
 
-        <a href="index.html">
+        <a href="./index.html">
             Home
         </a>
 
-        <a href="dashboard.html">
+        <a href="./dashboard.html">
             Dashboard
         </a>
 
-        <a href="add-transaction.html">
+        <a href="./add-transaction.html">
             Add Transaction
         </a>
 
-        <a href="budget.html">
+        <a href="./budget.html">
             Budget
         </a>
 
-        <a href="profile.html">
+        <a href="./profile.html">
             Profile
         </a>
 
-        <a href="#" id="logout-link">
+        <a
+            href="#"
+            id="logout-link"
+        >
             Logout
         </a>
 
@@ -315,6 +319,9 @@
 
                     logoutUser();
 
+                    window.location.href =
+                        "./login.html";
+
                 }
             );
 
@@ -326,4 +333,4 @@
 </body>
 
 </html>
-
+```
